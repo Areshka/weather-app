@@ -10,7 +10,13 @@ const citiesWeatherReducer = (state = createInitialState, action) => {
       return {
         ...state,
         cities: [...state.cities, action.payload],
-      };     
+      };
+
+    case ActionTypes.REMOVE_CITY_WEATHER:
+      return {
+        ...state,
+        cities: state.cities.filter((cityID) => cityID !== action.payload),
+      };
 
     default:
       return state;

@@ -6,3 +6,10 @@ export const addCityAction = (cityID) => {
     payload: cityID,
   };
 };
+
+export const deleteCityAction = (cityID) => {
+  return {
+    type: ActionTypes.REMOVE_CITY_WEATHER,
+    payload: cityID,
+  };
+};

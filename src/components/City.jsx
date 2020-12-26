@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
+import { deleteCityAction } from "../store/weather/action";
 import { getWeatherDataByIDFetch } from "../api/weather.service";
 
 const City = ({ cityID }) => {
+  const dispatch = useDispatch();
   const [cityWeather, setCityWeather] = useState([]);
 
   const getWeather = async () => {
@@ -62,13 +65,21 @@ const City = ({ cityID }) => {
         </div>
         {/* /.card-body */}
 
-        <div className="card-footer">         
+        <div className="card-footer">
           <button
-            className="btn btn-warning btn-sm w-100"
+            className="btn btn-warning btn-sm w-50"
             onClick={() => getWeather()}
           >
             Update
-          </button>         
+          </button>
+
+          <button
+            className="btn btn-danger btn-sm w-50"
+            onClick={() => dispatch(deleteCityAction(cityID))}
+          >
+            Delete
+          </button>
+         
         </div>
         {/* /.card-footer */}
       </div>
