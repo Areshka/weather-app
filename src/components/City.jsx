@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { getWeatherDataByIDFetch } from "../api/weather.service";
 
 const City = ({ cityID }) => {
@@ -53,14 +54,22 @@ const City = ({ cityID }) => {
 
           <p className="card-text">
             <small>
-              Time of data calculation: <br />
+              Time of data calculation:
+              <br />
               {new Date(cityWeather.dt * 1000).toLocaleString()}
             </small>
           </p>
         </div>
         {/* /.card-body */}
 
-        <div className="card-footer"></div>
+        <div className="card-footer">         
+          <button
+            className="btn btn-warning btn-sm w-100"
+            onClick={() => getWeather()}
+          >
+            Update
+          </button>         
+        </div>
         {/* /.card-footer */}
       </div>
       {/* /.card */}
