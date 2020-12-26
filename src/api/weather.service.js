@@ -1,6 +1,6 @@
 import axios from "./axios.instance";
 
-const APIkey = process.env.OPENWEATHERMAP_API_KEY;
+const APIkey = process.env.REACT_APP_API_KEY;
 
 export const getWeatherDataFetch = async (city) => {
   const { data } = await axios.get(
