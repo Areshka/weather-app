@@ -3,7 +3,7 @@ const API_CONFIG_DEV = {
 };
 
 const API_CONFIG_PROD = {
-  baseUrl: process.env.REACT_APP_PROD_URL,
+  baseUrl: process.env.REACT_APP_BASE_URL,
 };
 
 export const API_CONFIG =
