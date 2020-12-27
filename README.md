@@ -1,6 +1,6 @@
 # Weather app
 
-Test assignment for a front-end developer position.
+Test assignment for a React developer position.
 
 Implemented with the create-react-app.
 
