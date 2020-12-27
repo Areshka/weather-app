@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+
+import HourlyTemp from "../HourlyTemp";
+
 import {
   getHourlyWeatherFetch,
   getWeatherDataFetch,
 } from "../../api/weather.service";
 import { showAlertThunk } from "../../store/alert/thunks";
-import "./style.scss";
 
 const CityFull = () => {
   const dispatch = useDispatch();
@@ -102,44 +104,11 @@ const CityFull = () => {
       </div>
       {/* /.row */}
 
-      <div className="row no-gutters">
-        <div className="col-12">
-          <h4 className="text-center">Hourly temperature</h4>
-        </div>
-        {/* /.col */}
-
-        <div className="col-12">
-          <ul className="temp mb-5">
-            {hourlyWeatherData.hourly &&
-              hourlyWeatherData.hourly.map((el, i) => {
-                return (
-                  i < 20 && (
-                    <li
-                      className="temp-item"
-                      key={i}
-                      style={{ width: 100 / 20 + "%" }}
-                    >
-                      <span
-                        className="temp-item-value"
-                        style={{
-                          top: -el.temp + 50 + "%",
-                          backgroundColor: backgroundColorTemperature(el.temp),
-                        }}
-                      >
-                        {fixedValue(el.temp)}
-                      </span>
-                      <span className="temp-item-time">
-                        {new Date(el.dt * 1000).getHours() + ":00"}
-                      </span>
-                    </li>
-                  )
-                );
-              })}
-          </ul>
-        </div>
-        {/* /.col */}
-      </div>
-      {/* /.row */}
+      <HourlyTemp
+        hourlyWeatherData={hourlyWeatherData}
+        fixedValue={fixedValue}
+        backgroundColorTemperature={backgroundColorTemperature}
+      />
 
       <div className="row no-gutters">
         <div className="col-12 text-center">
