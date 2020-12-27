@@ -25,8 +25,8 @@ const CityFull = () => {
     setHourlyWeatherData(hourlyWeatherData);
   };
 
-  const updateCityWeather = () => {
-    getWeather(city);
+  const updateCityWeather = async () => {
+    await getWeather(city);
     dispatch(showAlertThunk("Data updated", "success"));
   };
 
