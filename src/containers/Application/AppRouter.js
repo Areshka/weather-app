@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import Cities from "../../components/Cities";
+import CityFull from "../../components/CityFullInfo/CityFullInfo";
 
 const AppRouter = () => {
   return (
@@ -10,7 +11,7 @@ const AppRouter = () => {
         <Cities />
       </Route>
       <Route exact path="/:city">
-        Test
+        <CityFull />
       </Route>
       <Redirect to="/" />
     </Switch>
