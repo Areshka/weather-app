@@ -17,8 +17,8 @@ const City = ({ cityID }) => {
     } catch (error) {}
   };
 
-  const updateCityWeather = () => {
-    getWeather(cityWeather.id);
+  const updateCityWeather = async () => {
+    await getWeather(cityWeather.id);
     dispatch(showAlertThunk("Data updated", "success"));
   };
 
@@ -57,7 +57,9 @@ const City = ({ cityID }) => {
           </div>
 
           {cityWeather.main && (
-            <h3 className="card-text">{fixedValue(cityWeather.main.temp)} °C</h3>
+            <h3 className="card-text">
+              {fixedValue(cityWeather.main.temp)} °C
+            </h3>
           )}
 
           {cityWeather.wind && (
