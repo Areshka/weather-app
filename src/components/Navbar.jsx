@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +16,9 @@ const Navbar = () => {
   const location = useLocation();
   const { register, handleSubmit, setValue } = useForm();
 
-  localStorage.setItem("cities", JSON.stringify(cities));
+  useEffect(() => {
+    localStorage.setItem("cities", JSON.stringify(cities));    
+  }, [cities]);
 
   const onSubmit = async ({ city }) => {
     if (!city) {
