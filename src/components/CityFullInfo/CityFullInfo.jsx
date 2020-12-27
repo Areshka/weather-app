@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
+import Preloader from "../Preloader";
 import HourlyTemp from "../HourlyTemp";
 
 import {
@@ -15,6 +16,7 @@ const CityFull = () => {
   let { city } = useParams();
   const [weatherData, setWeatherData] = useState({});
   const [hourlyWeatherData, setHourlyWeatherData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const getWeather = async () => {
     const weatherData = await getWeatherDataFetch(city);
@@ -25,6 +27,7 @@ const CityFull = () => {
       weatherData.coord.lon
     );
     setHourlyWeatherData(hourlyWeatherData);
+    setLoading(false);
   };
 
   const updateCityWeather = async () => {
@@ -50,7 +53,9 @@ const CityFull = () => {
     weatherData.weather &&
     "http://openweathermap.org/img/w/" + weatherData.weather[0].icon + ".png";
 
-  return (
+  return loading ? (
+    <Preloader />
+  ) : (
     <>
       <div className="row no-gutters mb-3">
         <div className="col-12">
