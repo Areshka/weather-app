@@ -34,13 +34,13 @@ const CityFull = () => {
     getWeather();
   }, [city]);
 
-  const convertZero = (value) => {
+  const fixedValue = (value) => {
     return value.toFixed() === "-0" ? 0 : value.toFixed();
   };
 
   const backgroundColorTemperature = (value) => {
-    if (Math.sign(convertZero(value)) === 1) return "orange";
-    if (Math.sign(convertZero(value)) === -1) return "skyblue";
+    if (Math.sign(fixedValue(value)) === 1) return "orange";
+    if (Math.sign(fixedValue(value)) === -1) return "skyblue";
     return "grey";
   };
 
@@ -60,7 +60,7 @@ const CityFull = () => {
           {weatherData.main && (
             <>
               <p className="display-4">
-                {weatherData.main.temp.toFixed() + " °C"}
+                {fixedValue(weatherData.main.temp) + " °C"}
               </p>
               <p className="badge badge-secondary">
                 {"Feel like: " + weatherData.main.feels_like.toFixed() + " °C"}
@@ -126,7 +126,7 @@ const CityFull = () => {
                           backgroundColor: backgroundColorTemperature(el.temp),
                         }}
                       >
-                        {convertZero(el.temp)}
+                        {fixedValue(el.temp)}
                       </span>
                       <span className="temp-item-time">
                         {new Date(el.dt * 1000).getHours() + ":00"}

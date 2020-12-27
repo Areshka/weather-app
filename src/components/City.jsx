@@ -26,6 +26,10 @@ const City = ({ cityID }) => {
     getWeather(cityID);
   }, [cityID]);
 
+  const fixedValue = (value) => {
+    return value.toFixed() === "-0" ? 0 : value.toFixed();
+  };
+
   const iconUrl =
     cityWeather.weather &&
     "http://openweathermap.org/img/w/" + cityWeather.weather[0].icon + ".png";
@@ -53,7 +57,7 @@ const City = ({ cityID }) => {
           </div>
 
           {cityWeather.main && (
-            <h3 className="card-text">{cityWeather.main.temp.toFixed()} °C</h3>
+            <h3 className="card-text">{fixedValue(cityWeather.main.temp)} °C</h3>
           )}
 
           {cityWeather.wind && (
