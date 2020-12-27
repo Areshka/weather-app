@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { showAlertThunk } from "../store/alert/thunks";
 import { deleteCityAction } from "../store/weather/action";
 import { getWeatherDataByIDFetch } from "../api/weather.service";
 
@@ -13,6 +15,11 @@ const City = ({ cityID }) => {
       const cityWeatherData = await getWeatherDataByIDFetch(cityID);
       setCityWeather(cityWeatherData);
     } catch (error) {}
+  };
+
+  const updateCityWeather = () => {
+    getWeather(cityWeather.id);
+    dispatch(showAlertThunk("Data updated", "success"));
   };
 
   useEffect(() => {
@@ -68,7 +75,7 @@ const City = ({ cityID }) => {
         <div className="card-footer">
           <button
             className="btn btn-warning btn-sm w-50"
-            onClick={() => getWeather()}
+            onClick={() => updateCityWeather()}
           >
             Update
           </button>
@@ -78,8 +85,7 @@ const City = ({ cityID }) => {
             onClick={() => dispatch(deleteCityAction(cityID))}
           >
             Delete
-          </button>
-         
+          </button>         
         </div>
         {/* /.card-footer */}
       </div>
