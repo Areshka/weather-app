@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import FormInput from "./FormInput";
 
+import { showAlertThunk } from "../store/alert/thunks";
 import { addCityAction } from "../store/weather/action";
 import { getWeatherDataFetch } from "../api/weather.service";
 import { citiesWeatherStateSelector } from "../store/weather/selectors";
@@ -18,6 +19,11 @@ const Navbar = () => {
   localStorage.setItem("cities", JSON.stringify(cities));
 
   const onSubmit = async ({ city }) => {
+    if (!city) {
+      dispatch(showAlertThunk("Enter city"));
+      return;
+    }
+
     try {
       const weatherData = await getWeatherDataFetch(city);
       const check = cities.some((e) => e === weatherData.id);
@@ -25,6 +31,8 @@ const Navbar = () => {
       if (!check) {
         dispatch(addCityAction(weatherData.id));
         setValue("city", "");
+      } else {
+        dispatch(showAlertThunk("City exists"));
       }
     } catch (error) {}
   };
