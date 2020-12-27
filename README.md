@@ -2,7 +2,7 @@
 
 Test assignment for a front-end developer position.
 
-Implemented using create-react-app.
+Implemented with the create-react-app.
 
 ### Used:
 * React
