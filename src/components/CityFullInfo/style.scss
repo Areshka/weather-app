@@ -1,0 +1,41 @@
+.temp {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100px;
+
+  &-item {
+    position: relative;
+    height: 100%;
+    min-width: 25px;
+    font-size: 12px;
+
+    &:first-child {
+      border-left: 2px solid rgb(207, 194, 194);
+    }
+
+    &:last-child {
+      border-right: 2px solid rgb(207, 194, 194);
+    }
+
+    &-value {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      text-align: center;
+      border-right: 1px solid rgb(207, 194, 194);
+      transform: translateY(-50%);
+    }
+
+    &-time {
+      position: absolute;
+      bottom: -30px;
+      height: 30px;
+      width: 100%;
+      font-size: 10px;
+      text-align: center;
+    }
+  }
+}
