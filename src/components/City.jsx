@@ -85,7 +85,13 @@ const City = ({ cityID }) => {
             onClick={() => dispatch(deleteCityAction(cityID))}
           >
             Delete
-          </button>         
+          </button>
+
+          <Link to={"/" + cityWeather.name}>
+            <button className="btn btn-outline-dark btn-sm w-100">
+              More information
+            </button>
+          </Link>
         </div>
         {/* /.card-footer */}
       </div>
